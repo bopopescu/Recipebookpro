@@ -1,0 +1,43 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/static/loginStyle.css"/>
+</head>
+{% extends "registration/base.html" %}
+{% block content %}
+<title>Login</title>
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+<body>
+<div style="text-align:center;">
+<form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+	<table style="margin-left:39%;margin-top:170px;" >
+		<tr>
+			<td><label for="username">username</label></td>
+			<td><input type="text" name="username" id="username" required="required" ></td>
+		</tr>
+		<tr>
+			<td><label for="password">password</label></td>
+			<td><input type="password" name="password" id="password" required="required"></td>
+		</tr>
+	</table>{%csrf_token%}
+	<br>
+	<input type="submit" value="Login" />
+	<input type="hidden" name="next" value="/shakeapp/" />
+</form>
+<button onclick="window.location='/shakeapp/logout'"> Logout</button>
+</div>
+
+<a href='https://keithlee002.appspot.com' id="v1">1.0</a>
+<p id="vCurrent" onclick="show()">2.0</p>
+</body>
+
+<script>
+function show(){
+	v1 = document.getElementById('v1');
+	if(v1.style.display==='')	
+		v1.style.display = 'block';
+}
+</script>
+{% endblock %}

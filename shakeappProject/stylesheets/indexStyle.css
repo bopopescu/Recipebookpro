@@ -1,0 +1,209 @@
+body{
+/*   	background-color:#FFF8C6;   */
+   	background-image: url(/media/Wooden_by_The_Auteur_Stock.jpg);   
+	background-position:center; 
+/* 	background-repeat:no-repeat;  */
+	color:#0A0A0A;
+	font-family:"Palatino";
+}
+ul{
+	text-align:center;
+	list-style:none;
+	margin-left:0px;
+}
+li:first-child{
+	margin-left:0px;
+}
+textarea{
+	background-color:blue;
+}
+h3{
+	font-style:italic;
+}
+.recipes{
+	font-size:30px;
+}
+.likes{
+	margin-top:-20px;
+	font-size:20px;
+}
+.idk{
+	font-size:16px;
+	color:grey;
+	position:absolute;
+	left:50%;
+	margin-left:-8px;
+	bottom:-1px;
+	cursor:pointer;
+}
+#firstPage{
+	position:absolute;
+	background: none;
+	border: none;
+	bottom:0px;
+	left:50%;
+	font-size:16px;
+	color:grey;	
+	margin-left:-8px;
+	cursor:pointer;
+}
+#shake{
+	width:75%;
+	margin-left:60px;
+	margin-bottom:-12px
+}
+	
+#ingredient{
+	color:grey;
+}
+#ingredients{
+	text-decoration: underline;
+}
+#addButton{
+	float:right;
+}
+.cookTime{
+}
+.tocNames{
+	cursor:pointer;	
+}
+#tocList{
+	font-size:16px;
+	height:475px;
+	width:104%;
+	overflow:auto;
+ 	clip:rect(0px, 480px, 260px, 0px ); 
+}
+#helpRecipeNames{
+	display:none;
+	font-size:14px;
+	text-align:center;
+	position:absolute;
+	width:100%;
+	color:#609;
+	margin-top:-11px;
+}
+	
+.help{
+	position:absolute;
+	text-align:center;
+	width:100%;
+	font-size:14px;
+	color:#609;
+	bottom:0px;
+	margin-bottom:37.5px;
+	display:none;
+}
+/* tooltip styling */
+.tooltip {
+  display:none;
+  z-index:1;
+  background:url(/media/black_arrow_big_up.png);
+  height:163px;
+  padding:40px 30px 10px 30px;
+  width:310px;
+  font-size:11px;
+  color:#fff;
+  margin-top:-10px;
+}
+
+/* a .label element inside tooltip */
+.tooltip .label {
+  color:yellow;
+  width:35px;
+}
+
+.tooltip a {
+  color:#ad4;
+  font-size:11px;
+  font-weight:bold;
+}
+#random{
+	position:absolute;
+}
+#randomPageNumber{
+	color:#609;
+	text-decoration:underline;
+}
+	
+#cover{
+	text-align:center;
+	margin-top:280px;
+	font-size:40px;
+}
+#flipbook{
+/*     width:960px;
+    height:630px;  */
+    position:fixed;
+    z-index:0;
+}
+
+#flipbook .page{
+/*     width:480px;
+    height:630px; */
+    	-webkit-transition:margin-left 0.2s;
+	-moz-transition:margin-left 0.2s;
+	-ms-transition:margin-left 0.2s;
+	-o-transition:margin-left 0.2s;
+	transition:margin-left 0.2s;
+    background-color:#F5FFFA;
+    line-height:24px;
+    font-size:18px;
+    text-align:center;
+}
+
+#flipbook .page-wrapper{
+    -webkit-perspective:2000px;
+    -moz-perspective:2000px;
+    -ms-perspective:2000px;
+    -o-perspective:2000px;
+    perspective:2000px;
+}
+
+#flipbook .hard{
+  	   background:#FFE7BC !important;  
+/*    background-image:url(/media/DSC05986.JPG);  */
+     background-position:center; 
+     background-repeat:no-repeat; 
+    background-size: 100% 100%;
+    color:#333;
+    -webkit-box-shadow:inset 0 0 5px #666;
+    -moz-box-shadow:inset 0 0 5px #666;
+    -o-box-shadow:inset 0 0 5px #666;
+    -ms-box-shadow:inset 0 0 5px #666;
+    box-shadow:inset 0 0 5px #666;
+    font-weight:bold;
+}
+
+#flipbook .odd{
+    background:-webkit-gradient(linear, right top, left top, color-stop(0.95, #FFF), color-stop(1, #DADADA));
+    background-image:-webkit-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:-moz-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:-ms-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:-o-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    -webkit-box-shadow:inset 0 0 5px #666;
+    -moz-box-shadow:inset 0 0 5px #666;
+    -o-box-shadow:inset 0 0 5px #666;
+    -ms-box-shadow:inset 0 0 5px #666;
+    box-shadow:inset 0 0 5px #666;
+}
+
+#flipbook .even{
+    background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+    background-image:-webkit-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:-moz-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:-ms-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:-o-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:linear-gradient(left, #fff 95%, #dadada 100%);
+    -webkit-box-shadow:inset 0 0 5px #666;
+    -moz-box-shadow:inset 0 0 5px #666;
+    -o-box-shadow:inset 0 0 5px #666;
+    -ms-box-shadow:inset 0 0 5px #666;
+    box-shadow:inset 0 0 5px #666;
+    text-decoration:underline;
+}​
+
+
+
+

@@ -1,0 +1,20 @@
+body{
+ 	background-color:#F5FFFA;
+	line-height:24px;	
+	color:#333333;
+	font-family:"Palatino";
+}
+#v1{
+	margin-left:49%;
+	bottom:40px;
+	position:absolute;
+	display:none;
+}
+#vCurrent{
+	margin-left:49%;
+	bottom:0px;
+	position:absolute;	
+	color:#609;
+	text-decoration:underline;
+	cursor:pointer;
+}

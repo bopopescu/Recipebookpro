@@ -1,0 +1,42 @@
+<html>
+<link rel="stylesheet" type="text/css" href="/static/detailStyle.css"/>
+<META name="Author" content="Keith Lee">
+
+<title> {{ recipe.name }} </title>
+<h1>{{ recipe.name }}</h1>
+<body>
+<div class="recipeText">
+	<img src="{{recipe.url}}"  width="100%" alt={{recipe.name}} >
+	<div style="text-align:center;margin-top:10px;">likes:{{recipe.numLikes}}</div>
+	<div class="like" style="text-align:center;margin-top:8px;">
+		<form action="/shakeapp/like/" method="post">
+			{% csrf_token %}
+			<input type="hidden" name="recipe_id" value="{{recipe.id}}">	
+			<input type="hidden" name="recipe_name" value="{{recipe.name}}">		
+			<input type="submit" value="Like">
+		</form>
+	</div>
+	<br>
+	<h3> Ingredients </h3>
+	<div style="text-align:center;">{{recipe.ingredients|linebreaksbr}}</div>
+	<br>
+	<h3> Instructions</h3>
+	<div style="text-align:center;">{{recipe.instruction|linebreaks}}</div>
+</div>
+
+<div class="delete" style="float:left;">
+	<form action="/shakeapp/delete/" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="recipe_id" value="{{recipe.id}}">	
+	<input type="hidden" name="recipe_name" value="{{recipe.name}}">
+	<input type="submit" value="Delete recipe" onclick=""> 
+	</form>
+</div>
+	</body>
+
+	<script>
+	{% if likedAlready%}
+		alert("You already liked this recipe. Now cook it!");
+	{% endif %}
+	</script>
+	</html>

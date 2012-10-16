@@ -1,0 +1,111 @@
+<META name="Author" content="Keith Lee">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/static/indexStyle.css"/>
+<link rel="stylesheet" type="text/css" href="/static/fancyboxSource/jquery.fancybox.css"/>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/static/fancyboxSource/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="/static/turn.min.js"></script>
+<script text="text/javascript" src="/static/jquery.tools.min.js"></script> 
+<script text="text/javascript" src="/static/script.js"></script> 
+
+</head>
+
+
+<title> Shake Application </title>
+<body style="width:1200px;height:800px;" >
+{% if messages %}
+	{% for message in messages %}
+		{{ message }}
+	{% endfor %}
+	<br>
+{% endif %}
+
+{% if recipeList %} 
+	<div id="flipbook">
+		<div class="hard"> <p id="cover">Recipes</p> </div>
+		<div class="page" id="toc"> 
+			<br>
+			<h3>Table of Contents</h3> 
+			<div id="helpRecipeNames"> Click recipes for more info </div>
+			<div id="tocList">{% for recipe in recipeList %}<br>{{forloop.counter}}.<span class="tocNames" onclick="flipbook.turn('page', hash['{{recipe.id}}']);"> {{recipe.name}}</span> {%endfor%} </div>
+			<div class="help"> Click here to logout</div>
+			<form action="/shakeapp/logout/" method="post" class="idk" >
+				{% csrf_token %}
+				<input type="submit"  value="1" id="firstPage">
+			</form>
+		</div>
+		<div class="page"> 
+			<br>
+			<h3> Random Recipe </h3>
+			<div id="random">
+			<form action="/shakeapp/random/" method="post" style="margin-top:55px;">
+			{% csrf_token %}
+			<label for="ingredient" style="font-size:16px;margin-left:2px;"> <p id="shake" >Shake your device or click the button below for a random recipe.</p><label><br>
+			<input type="text" name="ingredient" id="ingredient" value="ingredient" onclick="ingredientClick();" onblur="ingredientBlur();" style="color:grey;">
+			<input type="submit" name="randomButton" id="randomButton" onclick="randomClicked();" value="Cook this">
+			</form>
+			<h3 style="margin-top:150px"> Add Recipe </h3>
+			{% if not dev %}
+  			<button id="addButton" type="button" style="float:left;margin-left:202px;" onclick="window.location.href='https://recipebookpro.herokuapp.com/shakeapp/add'">Add Recipe </button>  
+  			{% else %}
+  			<button id="addButton" type="button" style="float:left;margin-left:202px;" onclick="window.location.href='http://127.0.0.1:8000/shakeapp/add/'">Add Recipe </button>  
+  			{% endif %}
+			<br>
+			</div>
+			<div class="help"> Click page number to go back to this page</div>
+			<p class="idk" id="randomPageNumber" onclick="helper();"> 2 </p>
+		</div>
+		<!-- Need onclick for each button due to turn.js page optimizations -->
+		{% for recipe in recipeList %}
+			<div class="page"><a id="{{forloop.counter|add:'3'}}" class="fancybox fancybox.iframe" data-fancybox-type="iframe" href="/shakeapp/{{ recipe.id}}/">	<img src="{{recipe.url}}" height="350px" width="470px"> 
+				<p class="recipes"> {{recipe.name}}</p></a>  <p class="likes"> likes:{{recipe.numLikes}}</p> <p class="cookTime">Cooking Time:</p> <p>{{recipe.cookHour}}hr &nbsp;{{recipe.cookMin}}min</p>
+				<p class="idk" onclick="flipbook.turn('page',2);" > {{forloop.counter|add:"2"}} </p> </div>
+				
+		{% endfor %}
+		{% if not even %}
+			<div class="page"> </div>
+		{% endif %}
+		<div class="hard" id="lastPage"></div>
+	</div>
+	<script type="text/javascript" >
+		hash = Object();
+	</script>
+	{% for recipe in recipeList %}
+			<script> hash['{{recipe.id}}'] = {{forloop.counter|add:'3'}};</script>
+	{% endfor %}
+ {% else %}
+	<p>No recipes have been created. </p>
+	<button type="button" style="float:left;" onclick="window.location.href='add'">Add Recipe </button>
+{% endif %} 
+</div>
+</body>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		//Window stuff for ipad and laptop
+		winW = document.documentElement.offsetWidth;
+		winH = document.documentElement.offsetHeight;
+		//2 to take into account browser default margins
+		margin= winW/2-480-240+2;
+		document.getElementById("flipbook").style.marginLeft = margin;
+		
+		// Effects for choosing a random recipe
+		function turn(){
+			// hash returns page of recipe + 1(cover page)
+			p = hash['{{recipeRandom.id}}'];
+			flipbook.turn('page', p);
+			setTimeout( click, 1000);
+		}
+		function click(){
+				$('#'+p).click();
+		}
+		{% if recipeRandom.id %}
+			$(document).ready(function(){
+				turn();
+			});	
+		{% endif %}
+	});
+</script>
+
+</html>
