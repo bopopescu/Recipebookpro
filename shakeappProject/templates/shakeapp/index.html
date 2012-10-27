@@ -42,9 +42,9 @@
 			</form>
 			<h3 style="margin-top:150px"> Add Recipe </h3>
 			{% if not dev %}
-  			<button id="addButton" type="button" style="float:left;margin-left:202px;" onclick="window.location.href='https://recipebookpro.herokuapp.com/shakeapp/add'">Add Recipe </button>  
+  			<button id="addButton" type="button" onclick="window.location.href='https://recipebookpro.herokuapp.com/shakeapp/add'">Add Recipe </button>  
   			{% else %}
-  			<button id="addButton" type="button" style="float:left;margin-left:202px;" onclick="window.location.href='http://127.0.0.1:8000/shakeapp/add/'">Add Recipe </button>  
+  			<button id="addButton" type="button" onclick="window.location.href='http://127.0.0.1:8000/shakeapp/add/'">Add Recipe </button>  
   			{% endif %}
 			<br>
 			</div>
@@ -75,12 +75,11 @@
 {% endif %} 
 </div>
 </body>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script type="text/javascript" src="/static/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="/static/fancyboxSource/jquery.fancybox.pack.js"></script>
 <script type="text/javascript" src="/static/turn.min.js"></script>
-<script text="text/javascript" src="/static/jquery.tools.min.js"></script> 
 <script text="text/javascript" src="/static/script.js"></script> 
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		//Window stuff for ipad and laptop

@@ -12,7 +12,7 @@
 <body>
 <div style="text-align:center;">
 <form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
-	<table style="margin-left:39%;margin-top:170px;" >
+	<table align="center" style="margin-top:170px;" >
 		<tr>
 			<td><label for="username">username</label></td>
 			<td><input type="text" name="username" id="username" required="required" ></td>
@@ -39,5 +39,6 @@ function show(){
 	if(v1.style.display==='')	
 		v1.style.display = 'block';
 }
+
 </script>
 {% endblock %}
