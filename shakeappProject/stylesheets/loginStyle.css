@@ -5,16 +5,29 @@ body{
 	font-family:"Palatino";
 }
 #v1{
-	margin-left:49%;
-	bottom:40px;
-	position:absolute;
+	width:100%;
+	right:10px;
+	text-align:right;
+	bottom:26px;
+	position:fixed;
 	display:none;
-}
+	}
 #vCurrent{
-	margin-left:49%;
-	bottom:0px;
-	position:absolute;	
+	z-index:1;
+ 	text-align:right; 
+	bottom:4px;
+	right:10px;
+	position:fixed;	
 	color:#609;
 	text-decoration:underline;
 	cursor:pointer;
 }
+	
+#compatible{
+	position:fixed;
+	margin:0;
+	bottom:4px;	
+	text-align:center;
+	width:100%;
+}
+	
