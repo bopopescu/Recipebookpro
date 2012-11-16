@@ -9,7 +9,7 @@
 
 
 <title>Recipebook</title>
-<body style="width:1200px;height:800px;" >
+<body >
 {% if messages %}
 	{% for message in messages %}
 		{{ message }}
@@ -86,7 +86,8 @@
 		winH = document.documentElement.offsetHeight;
 		//2 to take into account browser default margins
 		margin= winW/2-480-240+2;
-		document.getElementById("flipbook").style.marginLeft = margin;
+		//document.getElementById("flipbook").style.marginLeft = margin;
+		$('#flipbook').animate({marginLeft:margin});
 		
 		// Effects for choosing a random recipe
 		function turn(){

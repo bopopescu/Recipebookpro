@@ -13,6 +13,8 @@ body{
 	display:none;
 	}
 #vCurrent{
+/* 	margin-left:49%; */
+/* 	text-align:center; */
 	z-index:1;
  	text-align:right; 
 	bottom:4px;

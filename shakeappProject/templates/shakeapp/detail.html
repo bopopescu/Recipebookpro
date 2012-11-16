@@ -6,10 +6,10 @@
 <title> {{ recipe.name }} </title>
 <h1>{{ recipe.name }}</h1>
 <body>
-<div class="recipeText">
+<div id="recipeText">
 	<img src="{{recipe.url}}"  width="100%" alt={{recipe.name}} >
-	<div style="text-align:center;margin-top:10px;">likes:{{recipe.numLikes}}</div>
-	<div class="like" style="text-align:center;margin-top:8px;">
+	<div id="numLikes">likes:{{recipe.numLikes}}</div>
+	<div id="like">
 		<form action="/shakeapp/like/" method="post">
 			{% csrf_token %}
 			<input type="hidden" name="recipe_id" value="{{recipe.id}}">	
@@ -25,7 +25,7 @@
 	<div style="text-align:center;">{{recipe.instruction|linebreaks}}</div>
 </div>
 
-<div class="delete" style="float:left;">
+<div id="delete">
 	<form action="/shakeapp/delete/" method="post">
 	{% csrf_token %}
 	<input type="hidden" name="recipe_id" value="{{recipe.id}}">	

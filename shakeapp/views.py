@@ -24,7 +24,7 @@ from boto.s3.key import Key
 def index(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/')
-    recipeList = Recipe.objects.all()
+    recipeList = Recipe.objects.all().order_by('id')
     # If not even number of recipes add a page so that flipbook can close properly
     even = False
     if len(recipeList)%2 == 0:
@@ -125,7 +125,7 @@ def delete(request):
 def random(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/shakeapp/')    
-    recipeList = Recipe.objects.all()
+    recipeList = Recipe.objects.all().order_by('id')
     # If not even number of recipes add a page so that flipbook can close properly
     even = False
     if len(recipeList)%2 == 0:

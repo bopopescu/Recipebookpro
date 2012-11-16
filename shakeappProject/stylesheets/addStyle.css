@@ -4,6 +4,7 @@ body{
 	line-height:24px;	
 	color:#333333;
 	font-family:"Palatino";
+	text-align:center;
 }
 h1{
 	text-align:center;
@@ -13,14 +14,7 @@ h3{
 	text-align:center;
 	color:#171717;
 }
-#delete{
-	float:left;
-}
-#like{
-	text-align:center;
-	margin-top:8px;
-}
-#numLikes{
-	text-align:center;
-	margin-top:10px;
-}
+#table1{
+	margin:auto;
+	text-align:left;
+}	

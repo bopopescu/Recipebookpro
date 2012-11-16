@@ -2,8 +2,7 @@
 <html>
 <title> Add a recipe </title>
 <head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" type="text/css" href="/static/detailStyle.css"/>
+<link rel="stylesheet" type="text/css" href="/static/addStyle.css"/>
 </head>
 <body>
 {% if messages %}
@@ -12,12 +11,11 @@
 		    {{ form.non_field_errors }}
 	{% endfor %}
 {% endif%}
-<div class="new" style="text-align:center">
 	<h1> Add a new recipe</h1>	
       <form enctype="multipart/form-data" method="post" action="/shakeapp/add/">{% csrf_token %}
 	      	{% csrf_token %}
       
-			<table style="margin-left:auto; margin-right:auto;">
+			<table id="table1">
 				<tr>
 					<td><label for="name">Recipe Name</label>
 					<td><input type="text" name="name" id="name" required="required"></td>
@@ -54,14 +52,13 @@
 
 	<br>
 	<br>
-	<div class="new">
+	<div>
 		<form action="/shakeapp/logout/" method="post">
 			{% csrf_token %}
 			<input type="submit" value="Logout">
 		</form>
 	</div>
 
-</div>
 </body>
 </html>
 

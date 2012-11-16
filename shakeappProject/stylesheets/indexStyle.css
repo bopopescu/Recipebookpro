@@ -5,6 +5,8 @@ body{
 /* 	background-repeat:no-repeat;  */
 	color:#0A0A0A;
 	font-family:"Palatino";
+	width:1200px;
+	height:800px;
 }
 ul{
 	text-align:center;
@@ -33,14 +35,14 @@ h3{
 	position:absolute;
 	left:50%;
 	margin-left:-8px;
-	bottom:-1px;
+	bottom:0px;
 	cursor:pointer;
 }
 #firstPage{
 	position:absolute;
 	background: none;
 	border: none;
-	bottom:0px;
+	bottom:16px;
 	left:50%;
 	font-size:16px;
 	color:grey;	
