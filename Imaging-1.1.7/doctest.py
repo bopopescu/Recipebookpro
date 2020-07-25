@@ -141,7 +141,7 @@ def _test():
     verbose = "-v" in sys.argv
     for mod in modules:
         doctest.testmod(mod, verbose=verbose, report=0)
-    doctest.master.summarize()
+    doctest.main.summarize()
 
 if __name__ == "__main__":
     _test()
@@ -150,7 +150,7 @@ IOW, it just runs testmod on all the pkg modules.  testmod remembers the
 names and outcomes (# of failures, # of tries) for each item it's seen, and
 passing "report=0" prevents it from printing a summary in verbose mode.
 Instead, the summary is delayed until all modules have been tested, and
-then "doctest.master.summarize()" forces the summary at the end.
+then "doctest.main.summarize()" forces the summary at the end.
 
 So this is very nice in practice:  each module can be tested individually
 with almost no work beyond writing up docstring examples, and collections
@@ -180,10 +180,10 @@ often.  You may want other policies.
 
 testmod() actually creates a local instance of class doctest.Tester, runs
 appropriate methods of that class, and merges the results into global
-Tester instance doctest.master.
+Tester instance doctest.main.
 
 You can create your own instances of doctest.Tester, and so build your own
-policies, or even run methods of doctest.master directly.  See
+policies, or even run methods of doctest.main directly.  See
 doctest.Tester.__doc__ for details.
 
 
@@ -976,7 +976,7 @@ see its docs for details.
             return 0, 0
         return self.rundoc(target, name)
 
-master = None
+main = None
 
 def testmod(m, name=None, globs=None, verbose=None, isprivate=None,
                report=1):
@@ -1015,14 +1015,14 @@ def testmod(m, name=None, globs=None, verbose=None, isprivate=None,
 
     Advanced tomfoolery:  testmod runs methods of a local instance of
     class doctest.Tester, then merges the results into (or creates)
-    global Tester instance doctest.master.  Methods of doctest.master
+    global Tester instance doctest.main.  Methods of doctest.main
     can be called directly too, if you want to do something unusual.
     Passing report=0 to testmod is especially useful then, to delay
-    displaying a summary.  Invoke doctest.master.summarize(verbose)
+    displaying a summary.  Invoke doctest.main.summarize(verbose)
     when you're done fiddling.
     """
 
-    global master
+    global main
 
     if type(m) is not _ModuleType:
         raise TypeError("testmod: module required; " + `m`)
@@ -1044,10 +1044,10 @@ def testmod(m, name=None, globs=None, verbose=None, isprivate=None,
             tries = tries + t
     if report:
         tester.summarize()
-    if master is None:
-        master = tester
+    if main is None:
+        main = tester
     else:
-        master.merge(tester)
+        main.merge(tester)
     return failures, tries
 
 class _TestClass:

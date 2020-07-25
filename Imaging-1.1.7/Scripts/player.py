@@ -35,7 +35,7 @@ class AppletDisplay:
 
 class UI(Label):
 
-    def __init__(self, master, im):
+    def __init__(self, main, im):
         if type(im) == type([]):
             # list of images
             self.im = im[1:]
@@ -53,7 +53,7 @@ class UI(Label):
         global animation_display
         animation_display = AppletDisplay(self)
 
-        Label.__init__(self, master, image=self.image, bg="black", bd=0)
+        Label.__init__(self, main, image=self.image, bg="black", bd=0)
 
         self.update()
 
